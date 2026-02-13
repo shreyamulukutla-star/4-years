@@ -10,29 +10,24 @@
 <style>
 body {
     margin: 0;
-    overflow: hidden;
-    background-color: #5a0f1b; /* MAROON */
+    background-color: #5a0f1b; /* Maroon */
     font-family: 'Poppins', sans-serif;
-    color: #d4af37; /* GOLD */
+    color: #d4af37; /* Gold */
 }
 
 .slide {
-    position: absolute;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    padding: 40px;
+    display: none;
+    min-height: 100vh;
+    padding: 60px 20px;
     box-sizing: border-box;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
+    text-align: center;
 }
 
 .active {
-    opacity: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 h1 {
@@ -48,7 +43,7 @@ p {
 }
 
 button {
-    margin-top: 25px;
+    margin: 10px;
     padding: 10px 25px;
     background: transparent;
     border: 1px solid #d4af37;
@@ -64,11 +59,11 @@ button:hover {
     color: #5a0f1b;
 }
 
-/* Photo layout */
+/* Photo grid */
 .photo-grid {
     display: flex;
     gap: 20px;
-    margin-top: 25px;
+    margin-top: 30px;
     flex-wrap: wrap;
     justify-content: center;
 }
@@ -78,37 +73,28 @@ button:hover {
     height: 280px;
     object-fit: cover;
     border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-    transition: transform 0.4s ease;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease;
 }
 
 .photo-grid img:hover {
     transform: scale(1.05);
 }
-
-.nav-buttons {
-    position: absolute;
-    bottom: 40px;
-}
-
 </style>
 </head>
 
 <body>
 
-<!-- SLIDE 1 -->
+<!-- Slide 1 -->
 <div class="slide active">
     <h1>Your Title Here</h1>
-    <p>
-        You can edit this text.<br>
-        Make it poetic. Make it personal.
-    </p>
-    <div class="nav-buttons">
+    <p>Edit this text however you want.</p>
+    <div>
         <button onclick="nextSlide()">Next →</button>
     </div>
 </div>
 
-<!-- SLIDE 2 (PHOTO SLIDE) -->
+<!-- Slide 2 (Photos) -->
 <div class="slide">
     <h1>Memories</h1>
 
@@ -118,31 +104,18 @@ button:hover {
         <img src="photo3.jpg">
     </div>
 
-    <div class="nav-buttons">
+    <div>
         <button onclick="prevSlide()">← Back</button>
         <button onclick="nextSlide()">Next →</button>
     </div>
 </div>
 
-<!-- SLIDE 3 -->
+<!-- Slide 3 -->
 <div class="slide">
-    <h1>Write Something Beautiful</h1>
-    <p>
-        Replace this with your message.
-    </p>
+    <h1>Your Message</h1>
+    <p>Write something beautiful here.</p>
 
-    <div class="nav-buttons">
-        <button onclick="prevSlide()">← Back</button>
-        <button onclick="nextSlide()">Next →</button>
-    </div>
-</div>
-
-<!-- FINAL SLIDE -->
-<div class="slide">
-    <h1>Always Yours</h1>
-    <p>Shreya</p>
-
-    <div class="nav-buttons">
+    <div>
         <button onclick="prevSlide()">← Back</button>
     </div>
 </div>
@@ -160,6 +133,7 @@ function nextSlide() {
     if (currentSlide < slides.length - 1) {
         currentSlide++;
         showSlide(currentSlide);
+        window.scrollTo(0, 0);
     }
 }
 
@@ -167,6 +141,7 @@ function prevSlide() {
     if (currentSlide > 0) {
         currentSlide--;
         showSlide(currentSlide);
+        window.scrollTo(0, 0);
     }
 }
 </script>
